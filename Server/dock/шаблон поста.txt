@@ -1,0 +1,20 @@
+<div class="post">
+    <div class="post_header" >
+    <div class="madeBy">
+        <img/><div>
+        <h1>Danik Off</h1>
+        <h2>10 минут назад</h2>
+    </div>
+    </div></div>
+    <div class="content"><p class="text">
+    Результатов: примерно 1 160 000 000 (0,79 сек.) <br/>
+
+    Текст (2019) – смотреть онлайн – КиноПоискwww.kinopoisk.ru › film
+    7 авг. 2019 г. — Текст (2019) – смотреть онлайн на КиноПоиск. Всё о фильме: даты выхода, актеры, трейлеры, фото. Отзывы зрителей и ...
+     Рейтинг: 6,9/10 · ‎108 223 голоса
+    ‎Текст · ‎Рецензии · ‎Постеры · ‎Все...‎<a href="">Читать далее</a>
+</p>
+<div class="imgs"><img src="./src/LampIcon.png"/></div>
+</div>
+<div class="post_footer"><button class="like"></button></div>
+</div>

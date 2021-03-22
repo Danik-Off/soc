@@ -1,0 +1,120 @@
+ switch ($method)
+    {
+    case 'createPost':
+     $nw =new NewsEditor();
+$nw->newPost($user->id,text:$_GET["text"],img:$_GET["imgs"]);
+    echo json_encode(array(
+        "answer"=>"600",
+        "message" => "пост создан",        
+    ), JSON_UNESCAPED_UNICODE);
+    break;
+    ///////////////////////////////////////////////////
+    case 'GetNews':
+        $nw =new NewsEditor();
+     $answer =   $nw->GetPosts();
+     if($answer=="error"){
+            echo json_encode(array(
+                "answer"=>"603",
+                "message" => " новостная лента не удалось получить",        
+            ), JSON_UNESCAPED_UNICODE);
+            break;
+        }
+        else
+        {
+            echo json_encode(array(
+                "answer"=>"602",
+                "message" => " новостная лента успешно",
+                "res"=>$answer       
+            ), JSON_UNESCAPED_UNICODE);
+            break;
+        }
+//////////////////////////////////////////////////////////////////////////////////
+    case 'GetPostsByid':
+        $nw =new NewsEditor();
+        $answer =   $nw->GetPostsByid($_GET['id']);
+        if($answer=="error"){
+               echo json_encode(array(
+                   "answer"=>"603",
+                   "message" => " новостная лента не удалось получить",        
+               ), JSON_UNESCAPED_UNICODE);
+               break;
+           }
+           else
+           {
+               echo json_encode(array(
+                   "answer"=>"602",
+                   "message" => " новостная лента успешно",
+                   "res"=>$answer       
+               ), JSON_UNESCAPED_UNICODE);
+               break;
+           }
+    break;
+    ///////////////////////////////////////////////////
+    case 'GetUserInfo':
+        $u = new User();
+       echo json_encode( $u->GetUserByID($_GET['id']));
+    break;
+    ////////////////////////////////////////////////////
+    case 'RequestToFriend':
+       $r = new Relation($user->id);  
+      if($r->new_friend_request($_GET['id'])=="1"){
+        echo json_encode(array(
+            "answer"=>"500",
+            "message" => "заявка в друзья отправлена",        
+        ), JSON_UNESCAPED_UNICODE);
+        break;
+    }
+    else
+    {
+        echo json_encode(array(
+            "answer"=>"501",
+            "message" => "заявка в друзья не отправлена",
+                
+        ), JSON_UNESCAPED_UNICODE);
+        break;
+    }
+    break;
+    ////////////////////////////////////////////////////
+    case 'accept_Request_Friend':
+        $r = new Relation($user->id);  
+        if($r->accept_friend_request($_GET['id'])=="1"){
+          echo json_encode(array(
+              "answer"=>"502",
+              "message" => "заявка принята",        
+          ), JSON_UNESCAPED_UNICODE);
+          break;
+      }
+      else
+      {
+          echo json_encode(array(
+              "answer"=>"503",
+              "message" => "не удалось принять заявку в друзья",
+
+          ), JSON_UNESCAPED_UNICODE);
+          break;
+      }
+    break;
+    ////////////////////////////////////////////////////
+    case 'reject_Request_Friend':
+        $r = new Relation($user->id);  
+        if($r->reject_friend_request($_GET['id'])=="1"){
+          echo json_encode(array(
+              "answer"=>"504",
+              "message" => "заявка в друзья отклонена",        
+          ), JSON_UNESCAPED_UNICODE);
+          break;
+      }
+      else
+      {
+          echo json_encode(array(
+              "answer"=>"505",
+              "message" => "не удалось отклонить заявку в друзья",
+   
+          ), JSON_UNESCAPED_UNICODE);
+          break;
+      }
+    break;
+   ////////////////////////////////////////////////////
+   
+   ////////////////////////////////////////////////////
+}
